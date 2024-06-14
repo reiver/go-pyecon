@@ -62,11 +62,13 @@ func (receiver Client) PositionAddress(tokenID tokenid.TokenID) (addr.Address, e
 		if err != nil {
 			return addr.Nothing(), erorr.Errorf("pyecon: problem creating RPC client: %s", err)
 		}
+		defer rpcclient.Close()
 
 		client = ethclient.NewClient(rpcclient)
 		if nil == client {
 			return addr.Nothing(), errNilRPCClient
 		}
+		defer client.Close()
 	}
 
 	var result []byte

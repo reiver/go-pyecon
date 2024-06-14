@@ -61,11 +61,13 @@ func (receiver Client) URI(tokenID tokenid.TokenID) (string, error) {
 		if err != nil {
 			return "", erorr.Errorf("pyecon: problem creating RPC client: %s", err)
 		}
+		defer rpcclient.Close()
 
 		client = ethclient.NewClient(rpcclient)
 		if nil == client {
 			return "", errNilRPCClient
 		}
+		client.Close()
 	}
 
 	var result []byte
