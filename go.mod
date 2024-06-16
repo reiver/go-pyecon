@@ -4,8 +4,9 @@ go 1.22.0
 
 require (
 	github.com/ethereum/go-ethereum v1.14.5
+	github.com/reiver/go-ethaddr v0.0.0-20240616191021-ed2ef8520f4d
 	sourcecode.social/reiver/go-erorr v0.0.0-20230922202459-231149d185a1
-	sourcecode.social/reiver/go-opt v0.0.0-20240224175000-afc1a40c4b67
+	sourcecode.social/reiver/go-opt v0.0.0-20240616140311-1cc2b9ffdb7d
 )
 
 require (
@@ -23,6 +24,7 @@ require (
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/holiman/uint256 v1.2.4 // indirect
 	github.com/mmcloughlin/addchain v0.4.0 // indirect
+	github.com/reiver/go-eip55 v0.0.0-20240527041653-83d5e9e05714 // indirect
 	github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible // indirect
 	github.com/supranational/blst v0.3.11 // indirect
 	github.com/tklauser/go-sysconf v0.3.12 // indirect

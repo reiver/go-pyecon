@@ -1,13 +1,16 @@
 package pyecon
 
 import (
+	"github.com/reiver/go-ethaddr"
 	"sourcecode.social/reiver/go-opt"
 
-	"github.com/reiver/go-pyecon/addr"
+	"github.com/reiver/go-pyecon/blknum"
 )
 
 // Client is a client for a pyecon contract on some blockchain-network.
 type Client struct {
-	contractAddress addr.Address
-	rpcurl          opt.Optional[string]
+	contractAddress         ethaddr.Address
+	contractFromBlockNumber blknum.BlockNumber
+	rpcurl                  opt.Optional[string]
 }
+
