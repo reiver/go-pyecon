@@ -50,7 +50,7 @@ func (receiver Client) Logs() (Logs, error) {
 		if nil == client {
 			return Logs{}, errNilRPCClient
 		}
-		client.Close()
+		defer client.Close()
 	}
 
 //	var currentBlockNumber *big.Int

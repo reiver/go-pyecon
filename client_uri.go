@@ -67,7 +67,7 @@ func (receiver Client) URI(tokenID tokenid.TokenID) (string, error) {
 		if nil == client {
 			return "", errNilRPCClient
 		}
-		client.Close()
+		defer client.Close()
 	}
 
 	var result []byte
