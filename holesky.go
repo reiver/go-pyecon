@@ -3,15 +3,16 @@ package pyecon
 import (
 	"sourcecode.social/reiver/go-opt"
 
-	"github.com/reiver/go-pyecon/addr"
+	"github.com/reiver/go-pyecon/bnet"
 )
 
 // HoleskyClient returns a client for the pyecon contract on the holesky blockchain-network.
 func HoleskyClient(rpcurl string) Client {
-	contractAddress := addr.Holesky()
+	contractAddress, contractFromBlockNumber := bnet.Holesky()
 
 	return Client{
 		contractAddress:contractAddress,
+		contractFromBlockNumber:contractFromBlockNumber,
 		rpcurl:opt.Something(rpcurl),
 	}
 }
