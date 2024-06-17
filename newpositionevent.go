@@ -85,7 +85,7 @@ func (receiver NewPositionEvent) MintedYieldTokenShares() *big.Int {
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) ValueAPY() *big.Int {
+func (receiver NewPositionEvent) VaultAPY() *big.Int {
 	var bigint *big.Int = receiver.internal.VaultApy
 	return big.NewInt(0).Set(bigint)
 }
