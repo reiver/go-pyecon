@@ -14,7 +14,7 @@ import (
 )
 
 // Logs returns the logs for the pyecon contract on the network.
-func (receiver Client) Logs() (Logs, error) {
+func (receiver Client) Logs(fromBlockNumber *big.Int, toBlockNumber *big.Int) (Logs, error) {
 
 	var contractAddress ethcommon.Address
 	{
@@ -63,11 +63,16 @@ func (receiver Client) Logs() (Logs, error) {
 //		currentBlockNumber = header.Number
 //	}
 
-	var fromBlockNumber *big.Int = big.NewInt(0).SetUint64(contractFromBlockNumber)
+	{
+		if nil == fromBlockNumber {
+			fromBlockNumber = big.NewInt(0).SetUint64(contractFromBlockNumber)
+		}
+	}
 
 	query := ethereum.FilterQuery{
 		Addresses: []ethcommon.Address{contractAddress},
 		FromBlock: fromBlockNumber,
+		ToBlock:   toBlockNumber,
 	}
 
 	var logs []ethtypes.Log
