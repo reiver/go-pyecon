@@ -13,6 +13,7 @@ type Log struct {
 	blockNumber     uint64
 	index           uint
 	removed         bool
+	topics        []ethdigest.Digest
 	txDigest        ethdigest.Digest
 	txIndex         uint
 }
@@ -32,6 +33,13 @@ func (receiver *Log) setFromLog(log *ethtypes.Log) error {
 	receiver.removed         = log.Removed
 	receiver.txDigest        = ethdigest.Something(log.TxHash)
 	receiver.txIndex         = log.TxIndex
+
+	for _,topicHash := range log.Topics {
+
+		var topicDigest ethdigest.Digest = ethdigest.Something(topicHash)
+
+		receiver.topics = append(receiver.topics, topicDigest)
+	}
 
 	return nil
 }
@@ -54,6 +62,10 @@ func (receiver NewPositionEvent) Index() uint {
 
 func (receiver NewPositionEvent) Removed() bool {
 	return receiver.removed
+}
+
+func (receiver NewPositionEvent) Topics() []ethdigest.Digest {
+	return append([]ethdigest.Digest(nil), receiver.topics...)
 }
 
 func (receiver NewPositionEvent) TxDigest() ethdigest.Digest {
