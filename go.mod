@@ -5,6 +5,7 @@ go 1.22.0
 require (
 	github.com/ethereum/go-ethereum v1.14.5
 	github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3
+	github.com/reiver/go-ethdigest v0.0.0-20240617120136-821edb2628c2
 	sourcecode.social/reiver/go-erorr v0.0.0-20230922202459-231149d185a1
 	sourcecode.social/reiver/go-opt v0.0.0-20240616140311-1cc2b9ffdb7d
 )

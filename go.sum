@@ -133,6 +133,8 @@ github.com/reiver/go-eip55 v0.0.0-20240527041653-83d5e9e05714 h1:kqpgUDvgg7XOPAS
 github.com/reiver/go-eip55 v0.0.0-20240527041653-83d5e9e05714/go.mod h1:2xGMQ+3MPfBfiFCxZ5quOeamJQeZTvpmiWiGnVHyV8I=
 github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3 h1:FTU3cBCKlnX2PLjXnl+c4hhDKbS7jfvXGC/Zzfp6fjs=
 github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3/go.mod h1:mpdYhrsQgQ1rCML/adkS8oVldeCtubctfvulJWLq5os=
+github.com/reiver/go-ethdigest v0.0.0-20240617120136-821edb2628c2 h1:Y5dHFnqWTpflzNB+J/s9sGi54S8L5hac+X7KXa8WBM4=
+github.com/reiver/go-ethdigest v0.0.0-20240617120136-821edb2628c2/go.mod h1:C+6vT45nY6nAs5zPYSqW8KcfTf9gomx6g9JRvz4oKC4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rogpeppe/go-internal v1.9.0 h1:73kH8U+JUqXU8lRuOHeVHaa/SZPifC7BkcraZVejAe8=
