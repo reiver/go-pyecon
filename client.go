@@ -9,6 +9,7 @@ import (
 
 // Client is a client for a pyecon contract on some blockchain-network.
 type Client struct {
+	networkName             string
 	contractAddress         ethaddr.Address
 	contractFromBlockNumber uint64
 	rpcurl                  opt.Optional[string]
