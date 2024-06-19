@@ -43,35 +43,3 @@ func (receiver *Log) setFromLog(log *ethtypes.Log) error {
 
 	return nil
 }
-
-func (receiver NewPositionEvent) ContractAddress() ethaddr.Address {
-	return receiver.contractAddress
-}
-
-func (receiver NewPositionEvent) BlockDigest() ethdigest.Digest {
-	return receiver.blockDigest
-}
-
-func (receiver NewPositionEvent) BlockNumber() uint64 {
-	return receiver.blockNumber
-}
-
-func (receiver NewPositionEvent) Index() uint {
-	return receiver.index
-}
-
-func (receiver NewPositionEvent) Removed() bool {
-	return receiver.removed
-}
-
-func (receiver NewPositionEvent) Topics() []ethdigest.Digest {
-	return append([]ethdigest.Digest(nil), receiver.topics...)
-}
-
-func (receiver NewPositionEvent) TxDigest() ethdigest.Digest {
-	return receiver.txDigest
-}
-
-func (receiver NewPositionEvent) TxIndex() uint {
-	return receiver.txIndex
-}

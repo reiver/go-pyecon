@@ -2,10 +2,13 @@ package pyecon
 
 import (
 	"math/big"
+	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
+	"github.com/reiver/go-ethaddr"
+	"github.com/reiver/go-ethdigest"
 	"sourcecode.social/reiver/go-erorr"
 )
 
@@ -30,7 +33,9 @@ type NewPositionEvent struct {
 	networkName string
 }
 
-func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log) error {
+var _ BiToken = NewPositionEvent{}
+
+func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log, networkName string) error {
 	if nil == receiver {
 		return errNilReceiver
 	}
@@ -48,7 +53,13 @@ func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log) error {
 		return erorr.Errorf("pyecon: problem unpacking log-data from log from contract into a %T: %w", receiver.internal, err)
 	}
 
+	receiver.networkName = networkName
+
 	return nil
+}
+
+func (receiver NewPositionEvent) NetworkName() string {
+	return receiver.networkName
 }
 
 func (receiver NewPositionEvent) PrincipalAmount() *big.Int {
@@ -56,9 +67,19 @@ func (receiver NewPositionEvent) PrincipalAmount() *big.Int {
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) Maturity() *big.Int {
+func (receiver NewPositionEvent) Maturity() (time.Time, error) {
 	var bigint *big.Int = receiver.internal.Maturity
-	return big.NewInt(0).Set(bigint)
+
+	if nil == bigint  {
+		return time.Time{}, errNilMaturity
+	}
+	if !bigint.IsInt64() {
+		return time.Time{}, errMaturityOverflow
+	}
+
+	var unixtimestamp int64 = bigint.Int64()
+
+	return time.Unix(unixtimestamp, 0), nil
 }
 
 func (receiver NewPositionEvent) PrincipalTokenYieldPercentage() *big.Int {
@@ -89,4 +110,46 @@ func (receiver NewPositionEvent) MintedYieldTokenShares() *big.Int {
 func (receiver NewPositionEvent) VaultAPY() *big.Int {
 	var bigint *big.Int = receiver.internal.VaultApy
 	return big.NewInt(0).Set(bigint)
+}
+
+func (receiver NewPositionEvent) PositionContract() ethaddr.Address {
+	return ethaddr.Something(receiver.internal.PositionContract)
+}
+
+
+
+
+
+
+
+func (receiver NewPositionEvent) ContractAddress() ethaddr.Address {
+	return receiver.contractAddress
+}
+
+func (receiver NewPositionEvent) BlockDigest() ethdigest.Digest {
+	return receiver.blockDigest
+}
+
+func (receiver NewPositionEvent) BlockNumber() uint64 {
+	return receiver.blockNumber
+}
+
+func (receiver NewPositionEvent) Index() uint {
+	return receiver.index
+}
+
+func (receiver NewPositionEvent) Removed() bool {
+	return receiver.removed
+}
+
+func (receiver NewPositionEvent) Topics() []ethdigest.Digest {
+	return append([]ethdigest.Digest(nil), receiver.topics...)
+}
+
+func (receiver NewPositionEvent) TxDigest() ethdigest.Digest {
+	return receiver.txDigest
+}
+
+func (receiver NewPositionEvent) TxIndex() uint {
+	return receiver.txIndex
 }
