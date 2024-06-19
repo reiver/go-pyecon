@@ -153,3 +153,17 @@ func (receiver NewPositionEvent) TxDigest() ethdigest.Digest {
 func (receiver NewPositionEvent) TxIndex() uint {
 	return receiver.txIndex
 }
+
+
+
+func (receiver NewPositionEvent) PrincipalToken() PrincipalToken {
+	return internalPrincipalTokenAdaptor{
+		bitoken: &receiver,
+	}
+}
+
+func (receiver NewPositionEvent) YieldToken() YieldToken {
+	return internalYieldTokenAdaptor{
+		bitoken: &receiver,
+	}
+}

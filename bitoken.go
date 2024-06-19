@@ -33,4 +33,7 @@ type BiToken interface {
 	TxIndex() uint
 	VaultAPY() *big.Int
 	YieldTokenID() *big.Int
+
+	PrincipalToken() PrincipalToken
+	YieldToken() YieldToken
 }
