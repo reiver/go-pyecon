@@ -27,6 +27,7 @@ type internalNewPositionEvent struct {
 type NewPositionEvent struct {
 	Log
 	internal internalNewPositionEvent
+	networkName string
 }
 
 func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log) error {

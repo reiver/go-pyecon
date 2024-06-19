@@ -86,5 +86,8 @@ func (receiver Client) Logs(fromBlockNumber *big.Int, toBlockNumber *big.Int) (L
 
 	}
 
-	return Logs{logs}, nil
+	return Logs{
+		networkName:receiver.networkName,
+		logs:logs,
+	}, nil
 }

@@ -7,6 +7,7 @@ import (
 )
 
 type Logs struct {
+	networkName string
 	logs []ethtypes.Log
 }
 
@@ -27,7 +28,7 @@ func (receiver *Logs) NewPositionEvent() (*NewPositionEvent, error) {
 	}
 
 	{
-		err := event.setFromLog(&log)
+		err := event.setFromLog(&log, receiver.networkName)
 		if nil != err {
 			return nil, err
 		}
