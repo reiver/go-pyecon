@@ -13,7 +13,7 @@ type Logs struct {
 
 func (receiver *Logs) BiToken() (BiToken, error) {
 	const name string = newPositionEventName
-	var event NewPositionEvent
+	var event newPositionEvent
 
 	if nil == receiver {
 		return nil, errNilReceiver

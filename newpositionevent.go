@@ -26,16 +26,16 @@ type internalNewPositionEvent struct {
 	PositionContract    ethcommon.Address
 }
 
-// NewPositionEvent represents a "NewPositionEvent" in the logs of the contract from the network.
-type NewPositionEvent struct {
+// newPositionEvent represents a "NewPositionEvent" in the logs of the contract from the network.
+type newPositionEvent struct {
 	Log
 	internal internalNewPositionEvent
 	networkName string
 }
 
-var _ BiToken = NewPositionEvent{}
+var _ BiToken = newPositionEvent{}
 
-func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log, networkName string) error {
+func (receiver *newPositionEvent) setFromLog(log *ethtypes.Log, networkName string) error {
 	if nil == receiver {
 		return errNilReceiver
 	}
@@ -58,16 +58,16 @@ func (receiver *NewPositionEvent) setFromLog(log *ethtypes.Log, networkName stri
 	return nil
 }
 
-func (receiver NewPositionEvent) NetworkName() string {
+func (receiver newPositionEvent) NetworkName() string {
 	return receiver.networkName
 }
 
-func (receiver NewPositionEvent) PrincipalAmount() *big.Int {
+func (receiver newPositionEvent) PrincipalAmount() *big.Int {
 	var bigint *big.Int = receiver.internal.PrincipalAmount
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) Maturity() (time.Time, error) {
+func (receiver newPositionEvent) Maturity() (time.Time, error) {
 	var bigint *big.Int = receiver.internal.Maturity
 
 	if nil == bigint  {
@@ -82,37 +82,37 @@ func (receiver NewPositionEvent) Maturity() (time.Time, error) {
 	return time.Unix(unixtimestamp, 0), nil
 }
 
-func (receiver NewPositionEvent) PrincipalTokenYieldPercentage() *big.Int {
+func (receiver newPositionEvent) PrincipalTokenYieldPercentage() *big.Int {
 	var bigint *big.Int = receiver.internal.PtYieldPercent
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) PrincipalTokenID() *big.Int {
+func (receiver newPositionEvent) PrincipalTokenID() *big.Int {
 	var bigint *big.Int = receiver.internal.PTokenId
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) MintedPrincipalTokenShares() *big.Int {
+func (receiver newPositionEvent) MintedPrincipalTokenShares() *big.Int {
 	var bigint *big.Int = receiver.internal.MintedPtShares
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) YieldTokenID() *big.Int {
+func (receiver newPositionEvent) YieldTokenID() *big.Int {
 	var bigint *big.Int = receiver.internal.YTokenId
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) MintedYieldTokenShares() *big.Int {
+func (receiver newPositionEvent) MintedYieldTokenShares() *big.Int {
 	var bigint *big.Int = receiver.internal.MintedYtShares
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) VaultAPY() *big.Int {
+func (receiver newPositionEvent) VaultAPY() *big.Int {
 	var bigint *big.Int = receiver.internal.VaultApy
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver NewPositionEvent) PositionContract() ethaddr.Address {
+func (receiver newPositionEvent) PositionContract() ethaddr.Address {
 	return ethaddr.Something(receiver.internal.PositionContract)
 }
 
@@ -122,47 +122,47 @@ func (receiver NewPositionEvent) PositionContract() ethaddr.Address {
 
 
 
-func (receiver NewPositionEvent) ContractAddress() ethaddr.Address {
+func (receiver newPositionEvent) ContractAddress() ethaddr.Address {
 	return receiver.contractAddress
 }
 
-func (receiver NewPositionEvent) BlockDigest() ethdigest.Digest {
+func (receiver newPositionEvent) BlockDigest() ethdigest.Digest {
 	return receiver.blockDigest
 }
 
-func (receiver NewPositionEvent) BlockNumber() uint64 {
+func (receiver newPositionEvent) BlockNumber() uint64 {
 	return receiver.blockNumber
 }
 
-func (receiver NewPositionEvent) Index() uint {
+func (receiver newPositionEvent) Index() uint {
 	return receiver.index
 }
 
-func (receiver NewPositionEvent) Removed() bool {
+func (receiver newPositionEvent) Removed() bool {
 	return receiver.removed
 }
 
-func (receiver NewPositionEvent) Topics() []ethdigest.Digest {
+func (receiver newPositionEvent) Topics() []ethdigest.Digest {
 	return append([]ethdigest.Digest(nil), receiver.topics...)
 }
 
-func (receiver NewPositionEvent) TxDigest() ethdigest.Digest {
+func (receiver newPositionEvent) TxDigest() ethdigest.Digest {
 	return receiver.txDigest
 }
 
-func (receiver NewPositionEvent) TxIndex() uint {
+func (receiver newPositionEvent) TxIndex() uint {
 	return receiver.txIndex
 }
 
 
 
-func (receiver NewPositionEvent) PrincipalToken() PrincipalToken {
+func (receiver newPositionEvent) PrincipalToken() PrincipalToken {
 	return internalPrincipalTokenAdaptor{
 		bitoken: &receiver,
 	}
 }
 
-func (receiver NewPositionEvent) YieldToken() YieldToken {
+func (receiver newPositionEvent) YieldToken() YieldToken {
 	return internalYieldTokenAdaptor{
 		bitoken: &receiver,
 	}
