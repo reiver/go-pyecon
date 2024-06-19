@@ -18,11 +18,17 @@ type BiToken interface {
 	BlockDigest() ethdigest.Digest
 	BlockNumber() uint64
 	ContractAddress() ethaddr.Address
+	Index() uint
 	Maturity() (time.Time, error)
+	MintedPrincipalTokenShares() *big.Int
+	MintedYieldTokenShares() *big.Int
 	NetworkName() string
 	PositionContract() ethaddr.Address
 	PrincipalAmount() *big.Int
 	PrincipalTokenID() *big.Int
+	PrincipalTokenYieldPercentage() *big.Int
+	Removed() bool
+	Topics() []ethdigest.Digest
 	TxDigest() ethdigest.Digest
 	TxIndex() uint
 	VaultAPY() *big.Int

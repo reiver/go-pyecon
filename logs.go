@@ -11,7 +11,7 @@ type Logs struct {
 	logs []ethtypes.Log
 }
 
-func (receiver *Logs) NewPositionEvent() (*NewPositionEvent, error) {
+func (receiver *Logs) BiToken() (BiToken, error) {
 	const name string = newPositionEventName
 	var event NewPositionEvent
 
