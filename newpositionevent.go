@@ -7,6 +7,9 @@ import (
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
+	"github.com/reiver/go-chain10"
+	"github.com/reiver/go-chaincode"
+	"github.com/reiver/go-chainname"
 	"github.com/reiver/go-ethaddr"
 	"github.com/reiver/go-ethdigest"
 	"sourcecode.social/reiver/go-erorr"
@@ -30,12 +33,12 @@ type internalNewPositionEvent struct {
 type newPositionEvent struct {
 	Log
 	internal internalNewPositionEvent
-	networkName string
+	chainid uint64
 }
 
 var _ BiToken = newPositionEvent{}
 
-func (receiver *newPositionEvent) setFromLog(log *ethtypes.Log, networkName string) error {
+func (receiver *newPositionEvent) setFromLog(log *ethtypes.Log, chainid uint64) error {
 	if nil == receiver {
 		return errNilReceiver
 	}
@@ -43,7 +46,7 @@ func (receiver *newPositionEvent) setFromLog(log *ethtypes.Log, networkName stri
 		return errNilLog
 	}
 
-	err := receiver.Log.setFromLog(log)
+	err := receiver.Log.setFromEthereumLog(log)
 	if nil != err {
 		return err
 	}
@@ -53,13 +56,25 @@ func (receiver *newPositionEvent) setFromLog(log *ethtypes.Log, networkName stri
 		return erorr.Errorf("pyecon: problem unpacking log-data from log from contract into a %T: %w", receiver.internal, err)
 	}
 
-	receiver.networkName = networkName
+	receiver.chainid = chainid
 
 	return nil
 }
 
-func (receiver newPositionEvent) NetworkName() string {
-	return receiver.networkName
+func (receiver newPositionEvent) Chain10Exponent() (uint64, bool) {
+	return chain10.Exponent(receiver.chainid)
+}
+
+func (receiver newPositionEvent) ChainCode() string {
+	return chaincode.ChainCode(receiver.chainid)
+}
+
+func (receiver newPositionEvent) ChainID() uint64 {
+	return receiver.chainid
+}
+
+func (receiver newPositionEvent) ChainName() string {
+	return chainname.ChainName(receiver.chainid)
 }
 
 func (receiver newPositionEvent) PrincipalAmount() *big.Int {

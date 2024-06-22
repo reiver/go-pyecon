@@ -18,7 +18,7 @@ type Log struct {
 	txIndex         uint
 }
 
-func (receiver *Log) setFromLog(log *ethtypes.Log) error {
+func (receiver *Log) setFromEthereumLog(log *ethtypes.Log) error {
 	if nil == receiver {
 		return errNilReceiver
 	}

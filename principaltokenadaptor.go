@@ -1,6 +1,7 @@
 package pyecon
 
 import (
+	"fmt"
 	"math/big"
 	"time"
 )
@@ -36,14 +37,40 @@ func (receiver internalPrincipalTokenAdaptor) TokenType() TokenType {
 	return TokenTypePrincipalToken
 }
 
+func (receiver internalPrincipalTokenAdaptor) TokenName() string {
+	var datecode string
+	{
+		maturity, err := receiver.Maturity()
+		if nil != err {
+			datecode = maturity.Format("02Jan2006")
+		}
+	}
+
+	return fmt.Sprintf("PT-pye%s-%s", receiver.ChainCode(), datecode)
+}
+
+
+
+func (receiver internalPrincipalTokenAdaptor) Chain10Exponent() (uint64, bool) {
+	return receiver.bitoken.Chain10Exponent()
+}
+
+func (receiver internalPrincipalTokenAdaptor) ChainCode() string {
+	return receiver.bitoken.ChainCode()
+}
+
+func (receiver internalPrincipalTokenAdaptor) ChainID() uint64 {
+	return receiver.bitoken.ChainID()
+}
+
+func (receiver internalPrincipalTokenAdaptor) ChainName() string {
+	return receiver.bitoken.ChainName()
+}
+
 
 
 func (receiver internalPrincipalTokenAdaptor) Maturity() (time.Time, error) {
 	return receiver.bitoken.Maturity()
-}
-
-func (receiver internalPrincipalTokenAdaptor) NetworkName() string {
-	return receiver.bitoken.NetworkName()
 }
 
 func (receiver internalPrincipalTokenAdaptor) PrincipalAmount() *big.Int {

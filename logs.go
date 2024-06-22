@@ -7,7 +7,7 @@ import (
 )
 
 type Logs struct {
-	networkName string
+	chainid uint64
 	logs []ethtypes.Log
 }
 
@@ -28,7 +28,7 @@ func (receiver *Logs) BiToken() (BiToken, error) {
 	}
 
 	{
-		err := event.setFromLog(&log, receiver.networkName)
+		err := event.setFromLog(&log, receiver.chainid)
 		if nil != err {
 			return nil, err
 		}

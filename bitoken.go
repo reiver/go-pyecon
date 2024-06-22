@@ -17,12 +17,15 @@ import (
 type BiToken interface {
 	BlockDigest() ethdigest.Digest
 	BlockNumber() uint64
+	Chain10Exponent() (uint64,bool)
+	ChainCode() string
+	ChainID() uint64
+	ChainName() string
 	ContractAddress() ethaddr.Address
 	Index() uint
 	Maturity() (time.Time, error)
 	MintedPrincipalTokenShares() *big.Int
 	MintedYieldTokenShares() *big.Int
-	NetworkName() string
 	PositionContract() ethaddr.Address
 	PrincipalAmount() *big.Int
 	PrincipalTokenID() *big.Int
