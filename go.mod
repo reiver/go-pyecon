@@ -4,6 +4,10 @@ go 1.22.0
 
 require (
 	github.com/ethereum/go-ethereum v1.14.5
+	github.com/reiver/go-chain10 v0.0.0-20240622030129-16e0713682ee
+	github.com/reiver/go-chaincode v0.0.0-20240622113535-1b25aac36cde
+	github.com/reiver/go-chainid v0.0.0-20240622025807-37832b842bf4
+	github.com/reiver/go-chainname v0.0.0-20240622114035-a83107ce8cf6
 	github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3
 	github.com/reiver/go-ethdigest v0.0.0-20240617120136-821edb2628c2
 	sourcecode.social/reiver/go-erorr v0.0.0-20230922202459-231149d185a1

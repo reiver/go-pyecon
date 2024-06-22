@@ -21,6 +21,8 @@ import (
 //	currentBlockNumber, err := client.CurrentBlockNumber()
 func (receiver Client) CurrentBlockNumber() (*big.Int, error) {
 
+	var chainname string = receiver.ChainName()
+
 	var rpcurl string
 	{
 		var something bool
@@ -35,7 +37,7 @@ func (receiver Client) CurrentBlockNumber() (*big.Int, error) {
 	{
 		rpcclient, err := ethrpc.Dial(rpcurl)
 		if err != nil {
-			return nil, erorr.Errorf("pyecon: problem creating RPC client to %q network: %s", receiver.networkName, err)
+			return nil, erorr.Errorf("pyecon: problem creating RPC client to %q network: %s", chainname, err)
 		}
 		defer rpcclient.Close()
 
@@ -48,7 +50,7 @@ func (receiver Client) CurrentBlockNumber() (*big.Int, error) {
 
 	header, err := client.HeaderByNumber(context.Background(), nil)
 	if err != nil {
-		return nil, erorr.Errorf("pyecon: problem getting the current (latest) block-number for %q network: %s", receiver.networkName, err)
+		return nil, erorr.Errorf("pyecon: problem getting the current (latest) block-number for %q network: %s", chainname, err)
 	}
 
 	return header.Number, nil

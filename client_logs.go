@@ -16,6 +16,8 @@ import (
 // Logs returns the logs for the pyecon contract on the network.
 func (receiver Client) Logs(fromBlockNumber *big.Int, toBlockNumber *big.Int) (Logs, error) {
 
+	var chainname string = receiver.ChainName()
+
 	var contractAddress ethcommon.Address
 	{
 		var something bool
@@ -87,7 +89,7 @@ func (receiver Client) Logs(fromBlockNumber *big.Int, toBlockNumber *big.Int) (L
 	}
 
 	return Logs{
-		networkName:receiver.networkName,
+		networkName:chainname,
 		logs:logs,
 	}, nil
 }
