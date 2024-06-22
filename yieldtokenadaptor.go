@@ -41,7 +41,7 @@ func (receiver internalYieldTokenAdaptor) TokenName() string {
 	var datecode string
 	{
 		maturity, err := receiver.Maturity()
-		if nil != err {
+		if nil == err {
 			datecode = maturity.Format("02Jan2006")
 		}
 	}
