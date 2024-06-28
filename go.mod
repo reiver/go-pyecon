@@ -7,7 +7,7 @@ require (
 	github.com/reiver/go-chain10 v0.0.0-20240628165408-4ccdd28910b0
 	github.com/reiver/go-chaincode v0.0.0-20240628165326-93950577e3fd
 	github.com/reiver/go-chainid v0.0.0-20240628165206-38e508ddd121
-	github.com/reiver/go-chainname v0.0.0-20240628165349-59323ba38d8e
+	github.com/reiver/go-chainname v0.0.0-20240628171114-3f30b12e3dee
 	github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3
 	github.com/reiver/go-ethdigest v0.0.0-20240617120136-821edb2628c2
 	sourcecode.social/reiver/go-erorr v0.0.0-20230922202459-231149d185a1

@@ -135,8 +135,8 @@ github.com/reiver/go-chaincode v0.0.0-20240628165326-93950577e3fd h1:fKvSDobJFVE
 github.com/reiver/go-chaincode v0.0.0-20240628165326-93950577e3fd/go.mod h1:JDfp25r9NjN0yWiJ2iZGbgL+SdGvPo1QGOQIEEtglTY=
 github.com/reiver/go-chainid v0.0.0-20240628165206-38e508ddd121 h1:BFiuOv8t2A/VQhT24OOC8cbELtnPYhYDG3PJbTzzcDY=
 github.com/reiver/go-chainid v0.0.0-20240628165206-38e508ddd121/go.mod h1:piT+aP3ffSi0XCfC8vU7V1r4h5e3wCZSsLoXwWUHZXU=
-github.com/reiver/go-chainname v0.0.0-20240628165349-59323ba38d8e h1:d/ATZB8i2cSVwIed6z6v8elUOmMmpfR157gm04SFe4E=
-github.com/reiver/go-chainname v0.0.0-20240628165349-59323ba38d8e/go.mod h1:W6ygl0y0qcvTtIDST8Ev1YscBWLe0bExmXWUDSlVmqs=
+github.com/reiver/go-chainname v0.0.0-20240628171114-3f30b12e3dee h1:o1yqyRan4tKX2f/UAg4uuY3CfXNmBabM8m8XuQ5R+/s=
+github.com/reiver/go-chainname v0.0.0-20240628171114-3f30b12e3dee/go.mod h1:W6ygl0y0qcvTtIDST8Ev1YscBWLe0bExmXWUDSlVmqs=
 github.com/reiver/go-eip55 v0.0.0-20240527041653-83d5e9e05714 h1:kqpgUDvgg7XOPASTU5SkEkIJiJtXvsUdSTUsYOQdIEY=
 github.com/reiver/go-eip55 v0.0.0-20240527041653-83d5e9e05714/go.mod h1:2xGMQ+3MPfBfiFCxZ5quOeamJQeZTvpmiWiGnVHyV8I=
 github.com/reiver/go-ethaddr v0.0.0-20240616220303-d070ebfb9be3 h1:FTU3cBCKlnX2PLjXnl+c4hhDKbS7jfvXGC/Zzfp6fjs=
