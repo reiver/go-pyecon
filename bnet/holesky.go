@@ -6,8 +6,8 @@ import (
 )
 
 const holeskyChainID            = gochainid.Holesky
-const holeskyContractAddressHex = "0x762a204437f0648821e0460fcae62c072a0fa27d"
-const holeskyFromBlockNumber    = 1727830
+const holeskyContractAddressHex = "0x25ae93d88fc634e6cd9c61f04e3a33026eb40112"
+const holeskyFromBlockNumber    = 1787730
 
 var holeskyContractAddress ethaddr.Address = ethaddr.ParseStringElsePanic(holeskyContractAddressHex)
 
