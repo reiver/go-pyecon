@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/big"
 	"time"
+
+	"github.com/reiver/go-ethaddr"
 )
 
 type internalPrincipalTokenAdaptor struct {
@@ -23,6 +25,10 @@ func (receiver internalPrincipalTokenAdaptor) MintedPrincipalTokenShares() *big.
 
 func (receiver internalPrincipalTokenAdaptor) TokenID() *big.Int {
 	return receiver.bitoken.PrincipalTokenID()
+}
+
+func (receiver internalPrincipalTokenAdaptor) PositionAddress() ethaddr.Address {
+	return receiver.bitoken.PositionAddress()
 }
 
 func (receiver internalPrincipalTokenAdaptor) IsPrincipalToken() bool {

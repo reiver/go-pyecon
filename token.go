@@ -3,10 +3,13 @@ package pyecon
 import (
 	"math/big"
 	"time"
+
+	"github.com/reiver/go-ethaddr"
 )
 
 type Token interface {
 	TokenID() *big.Int
+	PositionAddress() ethaddr.Address
 	IsPrincipalToken() bool
 	IsYieldToken() bool
 	TokenType() TokenType

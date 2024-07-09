@@ -26,7 +26,7 @@ type BiToken interface {
 	Maturity() (time.Time, error)
 	MintedPrincipalTokenShares() *big.Int
 	MintedYieldTokenShares() *big.Int
-	PositionContract() ethaddr.Address
+	PositionAddress() ethaddr.Address
 	PrincipalAmount() *big.Int
 	PrincipalTokenID() *big.Int
 	PrincipalTokenYieldPercentage() *big.Int

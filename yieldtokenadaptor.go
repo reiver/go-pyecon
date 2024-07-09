@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/big"
 	"time"
+
+	"github.com/reiver/go-ethaddr"
 )
 
 type internalYieldTokenAdaptor struct {
@@ -23,6 +25,10 @@ func (receiver internalYieldTokenAdaptor) MintedYieldTokenShares() *big.Int {
 
 func (receiver internalYieldTokenAdaptor) TokenID() *big.Int {
 	return receiver.bitoken.YieldTokenID()
+}
+
+func (receiver internalYieldTokenAdaptor) PositionAddress() ethaddr.Address {
+	return receiver.bitoken.PositionAddress()
 }
 
 func (receiver internalYieldTokenAdaptor) IsPrincipalToken() bool {

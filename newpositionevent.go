@@ -121,7 +121,7 @@ func (receiver newPositionEvent) MintedYieldTokenShares() *big.Int {
 	return big.NewInt(0).Set(bigint)
 }
 
-func (receiver newPositionEvent) PositionContract() ethaddr.Address {
+func (receiver newPositionEvent) PositionAddress() ethaddr.Address {
 	return ethaddr.Something(receiver.internal.PositionContract)
 }
 
