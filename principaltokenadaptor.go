@@ -80,7 +80,3 @@ func (receiver internalPrincipalTokenAdaptor) PrincipalAmount() *big.Int {
 func (receiver internalPrincipalTokenAdaptor) PrincipalTokenYieldPercentage() *big.Int {
 	return receiver.bitoken.PrincipalTokenYieldPercentage()
 }
-
-func (receiver internalPrincipalTokenAdaptor) VaultAPY() *big.Int {
-	return receiver.bitoken.VaultAPY()
-}

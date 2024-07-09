@@ -25,7 +25,6 @@ type internalNewPositionEvent struct {
 	PtAmount           *big.Int
 	YtId               *big.Int
 	YtAmount           *big.Int
-	VaultApy           *big.Int
 	PositionContract    ethcommon.Address
 }
 
@@ -119,11 +118,6 @@ func (receiver newPositionEvent) YieldTokenID() *big.Int {
 
 func (receiver newPositionEvent) MintedYieldTokenShares() *big.Int {
 	var bigint *big.Int = receiver.internal.YtAmount
-	return big.NewInt(0).Set(bigint)
-}
-
-func (receiver newPositionEvent) VaultAPY() *big.Int {
-	var bigint *big.Int = receiver.internal.VaultApy
 	return big.NewInt(0).Set(bigint)
 }
 

@@ -34,7 +34,6 @@ type BiToken interface {
 	Topics() []ethdigest.Digest
 	TxDigest() ethdigest.Digest
 	TxIndex() uint
-	VaultAPY() *big.Int
 	YieldTokenID() *big.Int
 
 	PrincipalToken() PrincipalToken

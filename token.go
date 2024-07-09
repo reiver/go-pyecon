@@ -20,5 +20,4 @@ type Token interface {
 	Maturity() (time.Time, error)
 	PrincipalAmount() *big.Int
 	PrincipalTokenYieldPercentage() *big.Int
-	VaultAPY() *big.Int
 }
