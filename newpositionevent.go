@@ -21,10 +21,10 @@ type internalNewPositionEvent struct {
 	PrincipalAmount    *big.Int
 	Maturity           *big.Int
 	PtYieldPercent     *big.Int
-	PTokenId           *big.Int
-	MintedPtShares     *big.Int
-	YTokenId           *big.Int
-	MintedYtShares     *big.Int
+	PtId               *big.Int
+	PtAmount           *big.Int
+	YtId               *big.Int
+	YtAmount           *big.Int
 	VaultApy           *big.Int
 	PositionContract    ethcommon.Address
 }
@@ -103,22 +103,22 @@ func (receiver newPositionEvent) PrincipalTokenYieldPercentage() *big.Int {
 }
 
 func (receiver newPositionEvent) PrincipalTokenID() *big.Int {
-	var bigint *big.Int = receiver.internal.PTokenId
+	var bigint *big.Int = receiver.internal.PtId
 	return big.NewInt(0).Set(bigint)
 }
 
 func (receiver newPositionEvent) MintedPrincipalTokenShares() *big.Int {
-	var bigint *big.Int = receiver.internal.MintedPtShares
+	var bigint *big.Int = receiver.internal.PtAmount
 	return big.NewInt(0).Set(bigint)
 }
 
 func (receiver newPositionEvent) YieldTokenID() *big.Int {
-	var bigint *big.Int = receiver.internal.YTokenId
+	var bigint *big.Int = receiver.internal.YtId
 	return big.NewInt(0).Set(bigint)
 }
 
 func (receiver newPositionEvent) MintedYieldTokenShares() *big.Int {
-	var bigint *big.Int = receiver.internal.MintedYtShares
+	var bigint *big.Int = receiver.internal.YtAmount
 	return big.NewInt(0).Set(bigint)
 }
 
